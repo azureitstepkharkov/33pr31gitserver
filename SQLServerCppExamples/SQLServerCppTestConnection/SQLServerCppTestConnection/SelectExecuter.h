@@ -1,6 +1,14 @@
 #pragma once
-#include <iostream>
-//
+#include"InfoData.h"
+
+#include <iostream>//operator<<
+#include <fstream>//
+#include<algorithm>//sort
+#include<vector>//замена массива
+#include<functional>//шаблоны дл€ сортировок less<int> и т.п.
+#include<string>//работа со строками
+#include<list>//замена списка
+
 #include<iomanip>
 //
 #include <windows.h>
@@ -47,11 +55,23 @@ public:
 		this->SQLQuery = (SQLCHAR*)SQLQuery;
 		Execute(this->SQLQuery);
 	}
+	//
+	//перегрузка об€зательных операторов
+	friend ostream& operator<< (ostream& os, SelectExecuter& data)
+	{
+		os << "connection String = " << data.connectionString << endl;
+		return os;
+	}
+	friend ostream& operator<< (ostream& os, SelectExecuter* data)
+	{
+		os << "connection String = " << data->connectionString << endl;
+		return os;
+	}
+	//
 	void Execute(SQLCHAR* SQLQuery)
 	{
 		do
 		{
-			//
 			if (SQL_SUCCESS != SQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, &SQLEnvHandle))
 				// соедин€юсь с экземпл€ром
 				break;
@@ -101,22 +121,36 @@ public:
 				break;
 			}
 			else {
-				char name[256];
-				int id;
-				long double price;
-				while (SQLFetch(SQLStatementHandle) == SQL_SUCCESS) {
-					// Fetches the next rowset of data from the result
-					SQLGetData(SQLStatementHandle, 1, SQL_C_DEFAULT, &name, sizeof(name), NULL);
-					SQLGetData(SQLStatementHandle, 2, SQL_C_DEFAULT, &id, sizeof(id), NULL);
-					SQLGetData(SQLStatementHandle, 3, SQL_C_DEFAULT, &price, sizeof(price), NULL);
-					// Retrieves data for a single column in the result set
-					cout << name << " " << id << " " << std::get_money(price) << endl;
-					//MyAdres adr = new Adr(id,name, price);
-					//vec.add(adr);//list<MyAdres> vec;
+				vector<InfoData*> result;
+				getResult(SQLStatementHandle, result);
+				for (int i = 0; i < result.size(); i++)
+				{
+					cout << result[i]->id << " " << result[i]->name << endl;
 				}
 			}
 			//
 		} while (FALSE);
+	}
+	void getResult(SQLHANDLE SQLStatementHandle, vector<InfoData*>& result)
+	{
+		char name[256];
+		int id;
+		long double price;
+		while (SQLFetch(SQLStatementHandle) == SQL_SUCCESS) {
+			// Fetches the next rowset of data from the result
+			SQLGetData(SQLStatementHandle, 1, SQL_C_DEFAULT, &name, sizeof(name), NULL);
+			SQLGetData(SQLStatementHandle, 2, SQL_C_DEFAULT, &id, sizeof(id), NULL);
+			SQLGetData(SQLStatementHandle, 3, SQL_C_DEFAULT, &price, sizeof(price), NULL);
+			// Retrieves data for a single column in the result set
+			//cout << name << " " << id << " " << std::get_money(price) << endl;
+			//MyAdres adr = new Adr(id,name, price);
+			//vec.add(adr);//list<MyAdres> vec;
+			InfoData* data = new InfoData;
+			data->id = id;
+			data->name = name;
+			result.push_back(data);
+		}
+
 	}
 	virtual ~SelectExecuter()
 	{

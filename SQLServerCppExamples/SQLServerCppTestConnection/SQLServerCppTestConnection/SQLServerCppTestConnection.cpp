@@ -25,7 +25,7 @@ int main()
 	SQLCHAR SQLQuery[] = "SELECT ProductName, ProductID, UnitPrice FROM Products";
 	SQLCHAR connectionString[] = "DRIVER={SQL Server}; SERVER=localhost, 1433; DATABASE=NORTHWIND; Trusted_Connection=Yes";
 	SelectExecuter* se = new SelectExecuter(SQLQuery, connectionString);
-	//se.Execute("SELECT...");
+	cout << se << endl;
 	delete se;
 	system("pause");
 }
