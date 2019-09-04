@@ -5,16 +5,19 @@ using namespace std;
 class GameBoard
 {
 private:
-	const int N = 3;
-
+	const int N=3;
 public:
 	GameBoard()
 	{
 		for (int i = 0; i < N; i++)
 		{
-			cout << "_ " << " ";
+			for (int j = 0; j < N; j++)
+			{
+				cout << "_" << " ";
+				
+			}
+			cout << endl;
 		}
-		cout << endl;
 	};
 	GameBoard(int** board)
 	{
@@ -28,21 +31,23 @@ public:
 			{
 				if (2 == board[i][j])
 				{
-					cout << "_ " << " ";
-                }
-				else if (0 == board[i][j])
-				{
-					cout << "0" << " ";
+					cout << "_" << " ";
 				}
 				else if (1 == board[i][j])
 				{
-					cout << "X " << " ";
+					cout << "X" << " ";
 				}
-
+				else if (0 == board[i][j])
+				{
+					cout << "O" << " ";
+				}
 			}
 			cout << endl;
 		}
 	}
-	virtual ~GameBoard() {};
+	virtual ~GameBoard()
+	{
+
+	};
 };
 

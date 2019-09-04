@@ -2,11 +2,24 @@
 //
 
 #include "pch.h"
+#include"GameController.h"
 #include <iostream>
+#include<string>
 
+using namespace std;
 int main()
 {
-    std::cout << "Hello World!\n"; 
+    std::cout << "Hello from tictactoe game\n";
+	GameController* tictactoeGame = new GameController();
+	bool haveWinner = false;
+	do
+	{
+	//tictactoeGame.printResult();//вывожу текущую игровую ситуацию
+	tictactoeGame->Game();//спрашиваю куда ставить Х или 0
+	//haveWinner = tictactoeGame.haveWinner();//ищу линию X или 0
+	} while (!haveWinner);
+	delete tictactoeGame;
+	system("pause");
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

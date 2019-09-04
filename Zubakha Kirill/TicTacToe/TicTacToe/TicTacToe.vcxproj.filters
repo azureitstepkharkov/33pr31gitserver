@@ -13,10 +13,28 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Model">
+      <UniqueIdentifier>{f793a49a-3580-4c16-b280-8a7c30902e8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Viev">
+      <UniqueIdentifier>{a07bc23f-7cf0-49ce-9260-21bc13454bb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controller">
+      <UniqueIdentifier>{a7e8c6f0-acfc-4f10-91df-4d98a2438342}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BoardMatrix.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="GameBoard.h">
+      <Filter>Viev</Filter>
+    </ClInclude>
+    <ClInclude Include="GameController.h">
+      <Filter>Controller</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
