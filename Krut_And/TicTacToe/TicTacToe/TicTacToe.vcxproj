@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="BootMatrix.h" />
     <ClInclude Include="GameBoard.h" />
+    <ClInclude Include="GameController.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
