@@ -31,6 +31,7 @@ public:
 		delete[] matrix;
 	}
 	//operator[]
+	
 	int** getBoard()
 	{
 		return matrix;
