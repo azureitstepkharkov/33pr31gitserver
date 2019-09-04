@@ -13,10 +13,25 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Model">
+      <UniqueIdentifier>{04d61be2-bbe3-4773-b1c1-a1c437b27130}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{c1a7e789-6da3-41b3-8223-b922dc0241a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controller">
+      <UniqueIdentifier>{4c9cac99-dcb5-411a-b587-b7fb0b2d2a9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BoardMatrix.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="GameBoard.h">
+      <Filter>View</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
