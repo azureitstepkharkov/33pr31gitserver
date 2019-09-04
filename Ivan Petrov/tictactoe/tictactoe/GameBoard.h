@@ -45,6 +45,9 @@ public:
 			cout << endl;
 		}
 	}
-	virtual ~GameBoard();
+	virtual ~GameBoard()
+	{
+
+	};
 };
 
