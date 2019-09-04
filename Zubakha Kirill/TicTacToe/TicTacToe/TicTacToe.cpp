@@ -3,10 +3,21 @@
 
 #include "pch.h"
 #include <iostream>
-
+#include <string>
+#include "GameController.h"
+using namespace std;
 int main()
 {
+	setlocale(LC_ALL, "RUS");
     std::cout << "Hello World!\n"; 
+	GameController* tictactoeGame = new GameController();
+	bool haveWinner = false;
+	do {
+		tictactoeGame->printResult();
+		tictactoeGame->Game();
+		//haveWinner = tictactoeGame.haveWinner();
+	} while (!haveWinner);
+	delete tictactoeGame;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
