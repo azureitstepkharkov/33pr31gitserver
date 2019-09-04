@@ -14,6 +14,7 @@ public:
 		{
 			cout << "_ " << " ";
 		}
+		cout << endl;
 	};
 	GameBoard(int** board)
 	{
@@ -31,12 +32,13 @@ public:
                 }
 				else if (0 == board[i][j])
 				{
-					cout << "O" << " ";
+					cout << "0" << " ";
 				}
 				else if (1 == board[i][j])
 				{
 					cout << "X " << " ";
 				}
+
 			}
 			cout << endl;
 		}

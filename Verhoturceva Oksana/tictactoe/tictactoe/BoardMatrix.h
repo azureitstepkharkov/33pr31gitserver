@@ -1,4 +1,7 @@
 #pragma once
+#include<iostream>
+#include<string>
+using namespace std;
 class BoardMatrix
 {
 protected:
@@ -24,6 +27,16 @@ public:
 		}
 
 	};
+	void tester()
+	{
+		for (int i = 0; i < N; i++)
+		{
+			for (int j = 0; j < N; j++)
+			{
+				matrix[i][j] = rand() % 2;
+			}
+		}
+	}
 	virtual ~BoardMatrix()
 	{
 		for (int i = 0; i < N; i++)
