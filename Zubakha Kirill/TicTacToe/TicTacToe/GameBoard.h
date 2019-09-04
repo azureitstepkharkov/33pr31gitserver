@@ -44,6 +44,7 @@ public:
 	}
 	virtual ~GameBoard()
 	{
+
 	};
 };
 

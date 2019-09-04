@@ -4,49 +4,63 @@
 using namespace std;
 class BoardMatrix
 {
-protected:
 
+protected:
 	const int N = 3;
-	int** matrix;
+	int ** matrix;
+
 public:
+
 	BoardMatrix()
 	{
 		matrix = new int*[N];
 		for (int i = 0; i < N; i++)
 		{
 			matrix[i] = new int[N];
-	    }
-		//начального заполнения 2
-		for (int i = 0; i < N; i++)
-		{
-			for (int j = 0; j < N; j++)
-			{
-				matrix[i][j] = 2;
-			}
-			
 		}
 
-	};
-	void tester()
-	{
+
+		// начальное заполнение "2"
 		for (int i = 0; i < N; i++)
 		{
 			for (int j = 0; j < N; j++)
-			{
-				matrix[i][j] = rand() % 2;
-			}
+				matrix[i][j] = 2;
 		}
-	}
+	};
+	//
+	void GetXY()
+	{
+		matrix = new int*[N];
+		for (int i = 0; i < N; i++)
+		{
+			matrix[i] = new int[N];
+		}
+
+
+		// начальное заполнение случайным способом
+		for (int i = 0; i < N; i++)
+		{
+			for (int j = 0; j < N; j++)
+				matrix[i][j] = rand()%2 ;
+		}
+	};
+	//
 	virtual ~BoardMatrix()
 	{
 		for (int i = 0; i < N; i++)
 		{
-			delete matrix[i];
+			delete []matrix[i] ;
 		}
-		delete[] matrix;
+		delete[]matrix;
 	};
-	//operator[]
-	int**getBoard()
-	{ return matrix; }
+
+
+	int** getBoard()
+	{
+		return matrix;
+	};
+
+
+	
 };
 

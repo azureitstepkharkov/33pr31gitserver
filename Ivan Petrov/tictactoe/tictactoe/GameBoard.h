@@ -1,12 +1,11 @@
 #pragma once
 #include<iostream>
 #include<string>
-#include"BoardMatrix.h"
 using namespace std;
 class GameBoard
-
-{private:
-	const int N = 3;
+{
+private:
+	const int N=3;
 public:
 	GameBoard()
 	{
@@ -15,6 +14,7 @@ public:
 			for (int j = 0; j < N; j++)
 			{
 				cout << "_" << " ";
+				
 			}
 			cout << endl;
 		}
@@ -47,7 +47,7 @@ public:
 	}
 	virtual ~GameBoard()
 	{
-		
+
 	};
 };
 

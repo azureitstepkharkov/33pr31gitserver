@@ -16,11 +16,11 @@
     <Filter Include="Model">
       <UniqueIdentifier>{7b1faa18-ead5-4677-bd1b-7ef8d5719350}</UniqueIdentifier>
     </Filter>
-    <Filter Include="View">
-      <UniqueIdentifier>{84b54569-2cf4-42a4-8887-7767f5035f45}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Controller">
       <UniqueIdentifier>{3144b305-4d58-4530-9c16-7d60f7dcf6b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{9b9b22d2-8f91-4b19-9035-63c6fbecb48e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -34,7 +34,10 @@
       <Filter>Model</Filter>
     </ClInclude>
     <ClInclude Include="GameBoard.h">
-      <Filter>Header Files</Filter>
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="GameController.h">
+      <Filter>Controller</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -42,9 +45,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="tictactoe.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameBoard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

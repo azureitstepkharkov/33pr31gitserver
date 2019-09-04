@@ -36,6 +36,9 @@
     <ClInclude Include="GameBoard.h">
       <Filter>View</Filter>
     </ClInclude>
+    <ClInclude Include="GameController.h">
+      <Filter>Controller</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
