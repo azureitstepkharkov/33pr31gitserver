@@ -18,7 +18,9 @@ public:
 			{
 				cout << "_ " << " ";
 			}
+			cout << endl;
 		}
+		cout << endl << endl;
 	};
 	GameBoard(int** board)
 	{
@@ -46,6 +48,8 @@ public:
 		}
 	}
 
-	~GameBoard();
+	~GameBoard()
+	{
+	};
 };
 
