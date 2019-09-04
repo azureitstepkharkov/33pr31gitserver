@@ -1,13 +1,11 @@
 #pragma once
 #include<iostream>
 #include<string>
-using std::cout;
-using std::endl;
-using std::cin;
+using namespace std;
 class GameBoard
 {
 private:
-	const int N = 3;
+	const int N=3;
 public:
 	GameBoard()
 	{
@@ -16,6 +14,7 @@ public:
 			for (int j = 0; j < N; j++)
 			{
 				cout << "_" << " ";
+				
 			}
 			cout << endl;
 		}
@@ -23,7 +22,6 @@ public:
 	GameBoard(int** board)
 	{
 		DrawGameBoard(board);
-
 	};
 	void DrawGameBoard(int** board)
 	{
@@ -50,6 +48,6 @@ public:
 	virtual ~GameBoard()
 	{
 
-	}
+	};
 };
 
