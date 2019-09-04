@@ -3,6 +3,7 @@
 #include<string>
 using std::cout;
 using std::endl;
+using std::cin;
 class GameBoard
 {
 private:
@@ -46,6 +47,9 @@ public:
 			cout << endl;
 		}
 	}
-	virtual ~GameBoard();
+	virtual ~GameBoard()
+	{
+
+	}
 };
 
