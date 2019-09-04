@@ -19,7 +19,7 @@
     <Filter Include="Controller">
       <UniqueIdentifier>{bfc24234-605a-480c-8ffa-d9ba7ad4306a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Viev">
+    <Filter Include="View">
       <UniqueIdentifier>{e27703af-1c10-453e-a35b-3b722ab3290d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -31,7 +31,7 @@
       <Filter>Model</Filter>
     </ClInclude>
     <ClInclude Include="GameBoard.h">
-      <Filter>Header Files</Filter>
+      <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
