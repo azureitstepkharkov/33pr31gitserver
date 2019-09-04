@@ -8,7 +8,7 @@ private:
 	BoardMatrix* boardMatrix;
 	int x;
 	int y;
-	int counter;
+	int counter=0;
 public:
 	GameController()
 	{
@@ -27,7 +27,21 @@ public:
 		cin >> x;
 		cin >> y;
 		counter++;
+		gameBoard->DrawGameBoard(boardMatrix->getBoard());
 	}
+	void printResult()
+	{
+		if (counter > 0)
+		{
+			cout << "result";
+		}
+	}
+
+	void haveWinner()
+	{
+
+	}
+
 	~GameController()
 	{
 		delete gameBoard;

@@ -17,7 +17,7 @@ public:
 		{
 			for (int j = 0; j < N; j++)
 			{
-				matrix[2];
+				matrix[i][j] = 2;
 			}
 		}
 
