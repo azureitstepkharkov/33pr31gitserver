@@ -13,38 +13,17 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Model">
-      <UniqueIdentifier>{7b1faa18-ead5-4677-bd1b-7ef8d5719350}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="View">
-      <UniqueIdentifier>{84b54569-2cf4-42a4-8887-7767f5035f45}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Controller">
-      <UniqueIdentifier>{3144b305-4d58-4530-9c16-7d60f7dcf6b3}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BoardMatrix.h">
-      <Filter>Model</Filter>
-    </ClInclude>
-    <ClInclude Include="GameBoard.h">
+    <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tictactoe.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameBoard.cpp">
+    <ClCompile Include="MyAdressExample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
