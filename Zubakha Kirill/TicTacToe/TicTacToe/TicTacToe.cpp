@@ -1,33 +1,23 @@
-// SQLServerCppTestConnection.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// TicTacToe.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include "pch.h"
-#include"SelectExecuter.h"
-//
 #include <iostream>
-//
-#include<iomanip>
-//
-#include <windows.h>
-#include <sqlext.h>
-#include <sqltypes.h>
-#include <sql.h>
-
+#include <string>
+#include "GameController.h"
 using namespace std;
-//
-
-//
 int main()
 {
-    std::cout << "Hello from MS SQL Server!\n"; 
-	//void*
-	//SelectExecuter se;
-	SQLCHAR SQLQuery[] = "SELECT ProductName, ProductID, UnitPrice FROM Products";
-	SQLCHAR connectionString[] = "DRIVER={SQL Server}; SERVER=localhost, 1433; DATABASE=NORTHWIND; Trusted_Connection=Yes";
-	SelectExecuter* se = new SelectExecuter(SQLQuery, connectionString);
-	cout << se << endl;
-	delete se;
-	system("pause");
+	setlocale(LC_ALL, "RUS");
+    std::cout << "Hello World!\n"; 
+	GameController* tictactoeGame = new GameController();
+	bool haveWinner = false;
+	do {
+		tictactoeGame->printResult();
+		tictactoeGame->Game();
+		//haveWinner = tictactoeGame.haveWinner();
+	} while (!haveWinner);
+	delete tictactoeGame;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
