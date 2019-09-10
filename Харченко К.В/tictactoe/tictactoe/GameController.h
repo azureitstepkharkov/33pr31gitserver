@@ -31,7 +31,20 @@ public:
 		cin >> y;
 		counter++;
 	}
+	void TestPrint()
+	{
+		int count = 0;
+		for (int i = 0; i < boardMatrix->getBoard; i++)
+		{
+			for (int j = 0; j < boardMatrix->getBoard; j++)
+			{
+				cout << count;
+				count++;
 
+			}
+			count = 0;
+		}
+	}
 	~GameController()
 	{
 		delete[] gameBoard;

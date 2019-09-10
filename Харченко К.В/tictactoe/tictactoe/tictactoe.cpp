@@ -19,7 +19,7 @@ int main()
 	//	//tictactoeGame->~GameController();//спрашиваю куда ставить Х и 0
 	//	//haveWinner = tictactoeGame.haveWinner();//ищу линию Х и 0
 	//} while (!haveWinner);
-	
+	tictactoeGame->TestPrint();
 	
 	
 	delete tictactoeGame;
