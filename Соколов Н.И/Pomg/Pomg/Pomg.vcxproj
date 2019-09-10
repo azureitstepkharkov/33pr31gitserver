@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{E9C85236-0894-434A-841F-DAE90A0E5DF7}</ProjectGuid>
+    <ProjectGuid>{CC4187F5-22EC-4F05-9E42-9481783143E6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Pong</RootNamespace>
+    <RootNamespace>Pomg</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -152,7 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="MathHelper.h" />
-    <ClInclude Include="OpenGLSystem.h" />
+    <ClInclude Include="OpenGSSysteam.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="StringHelper.h" />
   </ItemGroup>
@@ -163,7 +163,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Pong.cpp" />
+    <ClCompile Include="Pomg.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

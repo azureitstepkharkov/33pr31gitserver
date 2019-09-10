@@ -1,4 +1,4 @@
-// Tips for Getting Started: 
+﻿// Tips for Getting Started: 
 //   1. Use the Solution Explorer window to add/manage files
 //   2. Use the Team Explorer window to connect to source control
 //   3. Use the Output window to see build output and other messages
@@ -8,10 +8,7 @@
 
 #ifndef PCH_H
 #define PCH_H
-// a few keycodes from 
-// http://msdn.microsoft.com/en-us/library/windows/desktop/dd375731%28v=vs.85%29.aspx
-#define VK_W 0x57
-#define VK_S 0x53
-#endif //PCH_H
 
-//
+// TODO: add headers that you want to pre-compile here
+
+#endif //PCH_H

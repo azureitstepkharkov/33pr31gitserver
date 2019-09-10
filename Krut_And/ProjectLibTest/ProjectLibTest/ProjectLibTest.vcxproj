@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{E9C85236-0894-434A-841F-DAE90A0E5DF7}</ProjectGuid>
+    <ProjectGuid>{791677E7-D2C2-420A-8D19-66D4264A6CF4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Pong</RootNamespace>
+    <RootNamespace>ProjectLibTest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -151,10 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="MathHelper.h" />
-    <ClInclude Include="OpenGLSystem.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="StringHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -163,7 +160,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Pong.cpp" />
+    <ClCompile Include="ProjectLibTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

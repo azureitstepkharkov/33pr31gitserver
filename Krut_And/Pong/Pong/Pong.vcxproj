@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{E9C85236-0894-434A-841F-DAE90A0E5DF7}</ProjectGuid>
+    <ProjectGuid>{83C42798-4F02-46BE-A071-2482386DA9EF}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Pong</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
@@ -151,10 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="MathHelper.h" />
-    <ClInclude Include="OpenGLSystem.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="StringHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

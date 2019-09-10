@@ -18,13 +18,13 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StringHelper.h">
+    <ClInclude Include="stringHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MathHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OpenGLSystem.h">
+    <ClInclude Include="OpenGL_System.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,7 +32,7 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Pong.cpp">
+    <ClCompile Include="pong_new.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

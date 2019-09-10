@@ -24,7 +24,7 @@
     <ClInclude Include="MathHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OpenGLSystem.h">
+    <ClInclude Include="OpenGSSysteam.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,7 +32,7 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Pong.cpp">
+    <ClCompile Include="Pomg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -2,9 +2,8 @@
 //
 
 #include "pch.h"
-#include "StringHelper.h"
-#include "MathHelper.h"
-
+#include"stringHelper.h"
+#include"MathHelper.h"
 #include <string>
 #include <windows.h>
 #include <iostream>
@@ -16,11 +15,11 @@
 #include "GL/freeglut.h"
 //freeglut - производитель
 #pragma comment(lib, "Opengl32.lib")
-MathHelper mh;//паттерн проектирования Singleton
-             //Одиночка. курс DT Design Pattern
 
-//
-//OpenGLSystem
+MathHelper mh; // паттер проектироване singleton
+//одиночка. курс DT
+
+//openGL
 void enable2D(int width, int height) {
 	glViewport(0, 0, width, height);
 	glMatrixMode(GL_PROJECTION);
@@ -29,7 +28,7 @@ void enable2D(int width, int height) {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
-//OpenGLSystem
+//openGL
 void drawRect(float x, float y, float width, float height) {
 	glBegin(GL_QUADS);
 	glVertex2f(x, y);
@@ -38,7 +37,6 @@ void drawRect(float x, float y, float width, float height) {
 	glVertex2f(x, y + height);
 	glEnd();
 }
-//OpenGLSystem
 void drawText(float x, float y, std::string text) {
 	glRasterPos2f(x, y);
 	glutBitmapString(GLUT_BITMAP_8_BY_13, (const unsigned char*)text.c_str());
@@ -47,34 +45,40 @@ void keyboard() {
 	// left racket
 	if (GetAsyncKeyState(VK_W)) mh.racket_left_y += mh.racket_speed;
 	if (GetAsyncKeyState(VK_S)) mh.racket_left_y -= mh.racket_speed;
+
 	// right racket
 	if (GetAsyncKeyState(VK_UP)) mh.racket_right_y += mh.racket_speed;
 	if (GetAsyncKeyState(VK_DOWN)) mh.racket_right_y -= mh.racket_speed;
 }
+
 void draw() {
 	// clear (has to be done at the beginning)
-
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
+
 	// draw rackets
 	drawRect(mh.racket_left_x, mh.racket_left_y, mh.racket_width, mh.racket_height);
 	drawRect(mh.racket_right_x, mh.racket_right_y, mh.racket_width, mh.racket_height);
+
 	// draw ball
 	drawRect(mh.ball_pos_x - mh.ball_size / 2, mh.ball_pos_y - mh.ball_size / 2, mh.ball_size, mh.ball_size);
+
 	// draw score
-	drawText(OpenGLSystem::width / 2 - 10, OpenGLSystem::height - 15,
-		StringHelper::int2str(mh.score_left) + ":"
-		+ StringHelper::int2str(mh.score_right));
+	drawText(OpenGL_System::width / 2 - 10, OpenGL_System::height - 15, stringHelper::int2str(mh.score_left) + ":" + stringHelper::int2str(mh.score_right));
+
 	// swap buffers (has to be done at the end)
 	glutSwapBuffers();
 }
 void update(int value) {
 	// input handling
 	keyboard();
+
 	// update ball
 	mh.updateBall();
+
 	// Call update() again in 'interval' milliseconds
-	glutTimerFunc(OpenGLSystem::interval, update, 0);
+	glutTimerFunc(OpenGL_System::interval, update, 0);
+
 	// Redisplay frame
 	glutPostRedisplay();
 }
@@ -83,17 +87,13 @@ int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutInitWindowSize(OpenGLSystem::width, OpenGLSystem::height);
+	glutInitWindowSize(OpenGL_System::width, OpenGL_System::height);
 	glutCreateWindow("Pong Example");
 	//Регистрация функций обратного вызова 
-	//функции, при помощи которых уведомляют программу о 
-	//событии
-	//в С# для уведомления о наступлении события
-	//создан механизм делегатов delegate
 	glutDisplayFunc(draw);
-	glutTimerFunc(OpenGLSystem::interval, update, 0);
+	glutTimerFunc(OpenGL_System::interval, update, 0);
 	//установка размеров сцены и "базового" цвета
-	enable2D(OpenGLSystem::width, OpenGLSystem::height);
+	enable2D(OpenGL_System::width, OpenGL_System::height);
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glutMainLoop();
 	return 0;
