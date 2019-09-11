@@ -2,7 +2,6 @@
 
 #include"BoardMatrix.h"
 #include"GameBoard.h"
-//#include"ostream"
 #include<fstream>
 class GameController
 {
@@ -31,8 +30,8 @@ public:
 	{
 		
 		ofstream os;
-		string file123("tictac123.txt");
-		os.open(file123);
+		
+		os.open("D:\\Обучение\\Шаг\\VS_C++\\Проект Visual C++\\_TestSVNServer\\SokolovNikolai\\rezalt.txt");
 		if (!os.is_open()) cout << "Not open\n";
 		if (os.is_open())
 		{
@@ -57,8 +56,12 @@ public:
 
 	bool readFile(int ** abs)
 	{
+		
 		ifstream fin;
-		fin.open("tictac123.txt");
+		ifstream fin1;
+				//D:\Обучение\Шаг\VS_C++\Проект Visual C++\_TestSVNServer\SokolovNikolai
+		fin.open("D:\\Обучение\\Шаг\\VS_C++\\Проект Visual C++\\_TestSVNServer\\SokolovNikolai\\rezalt.txt");
+		fin1.open("D:\\Обучение\\Шаг\\VS_C++\\Проект Visual C++\\_TestSVNServer\\SokolovNikolai\\rezalt.txt");
 		if (!fin.is_open())
 		{
 			cout << "NOT OPEN" << endl;
@@ -75,7 +78,9 @@ public:
 			{
 				return true;
 			}
+			
 			getline(fin, str);
+			getline(fin1, oo);
 			for (int i(0); i < 3; i++)
 			{
 				getline(fin, str);
@@ -93,7 +98,7 @@ public:
 				}
 
 			}
-			getline(fin, oo);
+			
 			if (oo.length() > 0)
 			{
 				int pos_end = oo.find("#");
@@ -106,96 +111,26 @@ public:
 		return false;
 
 	}
-
-	/*void prin(int **abc)
-	{
-		
-		for (int i(0); i < 3; i++)
-		{
-			for (int j = 0; j < 3; j++)
-				cout << abc[i][j] << " ";
-			cout << endl;
-		}
-		
-	}*/
-
-
-	/*string  read(string filename)
-	{
-		void zapis(int);
-		int b = 9;
-		string len;
-		ifstream os;
-		os.open(filename);
-		string XY;
-		getline(os, XY);
-		while (b)
-		{
-			
-			
-				int pos = 0;
-				int pos_end = len.find("$", pos);
-				XY = len.substr(pos, pos_end - pos);
-				pos = pos_end + 1;
-				b--;
-		}
-		return XY;
-		os.close();
-	}*/
-
-	/*friend  ostream& operator <<(ostream &os, BoardMatrix &obj)
-	{
-
-		
-	}*/
-	
-
 	void Game()
 	{
-		
+
 		cout << "input numbers cell" << endl;
-		if (countr % 2 == 0)
-		{
+		
+		
 			if (readFile(boardMatrix->GetDoard()))
 			{
 				cout << "X" << endl;
 
 				cin >> x;
 				cin >> y;
-			
-				if (checPick(boardMatrix->GetDoard(), x, y))
-				{
-					
-					boardMatrix->SET_BoardMatrix(x, y, 1);
-					zapis(boardMatrix->GetDoard());
-					
-				}
-				else
-				{
-					cout << "ZANYTO" << endl;
-					return Game();
-
-				}
-			}
-			else {
-				
-				
-				if (CheckMatrix(boardMatrix->GetDoard()))
-				{
-					cout << "GAME OVER" << endl;
-					haveViner();
-				}
-				else
-				{
-					cout << "X" << endl;
-					cin >> x;
-					cin >> y;
+				readFile(boardMatrix->GetDoard());
+				if (countr % 2 == 0) {
 					if (checPick(boardMatrix->GetDoard(), x, y))
 					{
-						
+
 						boardMatrix->SET_BoardMatrix(x, y, 1);
 						zapis(boardMatrix->GetDoard());
-						
+
 					}
 					else
 					{
@@ -204,32 +139,99 @@ public:
 
 					}
 				}
+				else
+				{
+					cout << "Waiting yur partner" << endl;
+					readFile(boardMatrix->GetDoard());
+					return Game();
+				}
+	/*			if (countr % 2 != 0) {
+					if (checPick(boardMatrix->GetDoard(), x, y))
+					{
+
+						boardMatrix->SET_BoardMatrix(x, y, 0);
+						zapis(boardMatrix->GetDoard());
+
+					}
+					else
+					{
+						cout << "ZANYTO" << endl;
+						return Game();
+
+					}
+				}
+				else
+				{
+					cout << "Waiting yur partner" << endl;
+					readFile(boardMatrix->GetDoard());
+					return Game();
+				}
+	*/		}
+			else {
+				
+				
+				if (CheckMatrix(boardMatrix->GetDoard()))
+				{
+					cout << "GAMAOWER" << endl;
+					fstream ofs;
+					ofs.open("D:\\Обучение\\Шаг\\VS_C++\\Проект Visual C++\\_TestSVNServer\\SokolovNikolai\\rezalt.txt");
+					ofs << "";
+					haveViner();
+				}
+				else
+				{
+					cout << "X" << endl;
+					cin >> x;
+					cin >> y;
+					readFile(boardMatrix->GetDoard());
+					if (countr % 2 == 0) {
+						if (checPick(boardMatrix->GetDoard(), x, y))
+						{
+
+							boardMatrix->SET_BoardMatrix(x, y, 1);
+							zapis(boardMatrix->GetDoard());
+
+						}
+						else
+						{
+							cout << "ZANYTO" << endl;
+							return Game();
+
+						}
+					}
+					else
+					{
+						cout << "Waiting yur partner" << endl;
+						readFile(boardMatrix->GetDoard());
+						return Game();
+					}
+					
+					/*if (countr % 2 != 0) {
+						if (checPick(boardMatrix->GetDoard(), x, y))
+						{
+
+							boardMatrix->SET_BoardMatrix(x, y, 0);
+							zapis(boardMatrix->GetDoard());
+
+						}
+						else
+						{
+							cout << "ZANYTO" << endl;
+							return Game();
+
+						}
+					}
+					else
+					{
+						cout << "Waiting yur partner" << endl;
+						readFile(boardMatrix->GetDoard());
+						return Game();
+					}*/
+				}
 				
 				
 					
 			}
-		}
-		else
-		{
-				cout << "O" << endl;
-				cin >> x;
-				cin >> y;
-				if (checPick(boardMatrix->GetDoard(), x, y))
-				{
-					
-					boardMatrix->SET_BoardMatrix(x, y, 0);
-					zapis(boardMatrix->GetDoard());
-					
-				}
-				else
-				{
-					cout << "ZANYTO" << endl;
-					return Game();
-					
-				}
-			
-			
-		}
 		
 		cout << countr << endl;
 		
@@ -282,7 +284,9 @@ public:
 			if (CheckMatrix(checM))
 			{
 				cout << "POBEDA" << endl;
-				
+				fstream ofs;
+				ofs.open("D:\\Обучение\\Шаг\\VS_C++\\Проект Visual C++\\_TestSVNServer\\SokolovNikolai\\rezalt.txt");
+				ofs << "";
 				return 1;
 			}
 			cout << checM << endl;
@@ -292,6 +296,9 @@ public:
 				||checM[x + 2][y] == checM[x + 1][y + 1] && checM[x + 2][y] == checM[x][y + 2]&& checM[x][y + 2]!=2&& checM[x][y])
 			{
 				cout << "POBEDA" << endl;
+				fstream ofs;
+				ofs.open("D:\\Обучение\\Шаг\\VS_C++\\Проект Visual C++\\_TestSVNServer\\SokolovNikolai\\rezalt.txt");
+				ofs << "";
 				return 1;
 			}
 			return false;		
