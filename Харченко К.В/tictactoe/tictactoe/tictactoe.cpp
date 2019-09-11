@@ -1,39 +1,31 @@
-// tictactoe.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
+#include "BoardMatrix.h"
 #include "pch.h"
-#include"GameController.h"
-#include <iostream>
-#include<string>
-
-using namespace std;
+#include"GameBoard.h"
+#include "GameController.h"
 
 int main()
 {
-    std::cout << "Hello from tictactoe!\n"; 
-	GameController* tictactoeGame = new GameController();
-	bool haveWinner = false;
-	//do
-	//{
-	//	//tictactoeGame.printResult();//вывожу текущую игровую ситуацию
-	//	//tictactoeGame->~GameController();//спрашиваю куда ставить Х и 0
-	//	//haveWinner = tictactoeGame.haveWinner();//ищу линию Х и 0
-	//} while (!haveWinner);
-	tictactoeGame->TestPrint();
+    std::cout << "Hello from tictatoe game"<< endl;
+	GameController* tictactoegame = new GameController();
+	bool haveViner = false;
 	
 	
-	delete tictactoeGame;
-	system("pause");
-	return 0;
+
+	do
+	{
+	int **abs;
+	tictactoegame->Game(); // спрашиваю куда ставить Х или О
+	haveViner = tictactoegame->haveViner();// ищу линию Х или О 
+	//system("cls");
+	tictactoegame->printresult();// вывожу текущую игровую ситуацию
+	
+	
+	} while (!haveViner); 
+	
+	//int XUX = tictactoegame->readFile();
+	/*tictactoegame->prin(XUX);*/
+	/*cout << XUX;*/
+	//delete tictactoegame;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
