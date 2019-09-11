@@ -31,22 +31,38 @@ public:
 		if (countr % 2 == 0)
 		{
 
-			cout << "X" << endl;
-			cin >> x;
-			cin >> y;
-			int ** aa = boardMatrix->GetDoard();
-			if (checPick(boardMatrix->GetDoard(), x, y))
-			{
-				boardMatrix->SET_BoardMatrix(x, y, 1);
-			}
+				cout << "X" << endl;
+				cin >> x;
+				cin >> y;
+				if (checPick(boardMatrix->GetDoard(), x, y))
+				{
+					boardMatrix->SET_BoardMatrix(x, y, 1);
+				}
+				else
+				{
+					cout << "ZANYTO" << endl;
+					return Game();
+					
+				}
 			
 		}
 		else
 		{
-			cout << "O" << endl;
-			cin >> x;
-			cin >> y;
-			boardMatrix->SET_BoardMatrix(x, y, 0);
+				cout << "O" << endl;
+				cin >> x;
+				cin >> y;
+				if (checPick(boardMatrix->GetDoard(), x, y))
+				{
+					boardMatrix->SET_BoardMatrix(x, y, 0);
+				}
+				else
+				{
+					cout << "ZANYTO" << endl;
+					return Game();
+					
+				}
+			
+			
 		}
 		countr++;
 		cout << countr << endl;
@@ -64,6 +80,7 @@ public:
 		{
 			return true;
 		}
+		else return false;
 	}
 
 	bool CheckMatrix(int ** checM)
