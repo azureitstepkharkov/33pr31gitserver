@@ -182,7 +182,7 @@ public:
 				
 				if (CheckMatrix(boardMatrix->GetDoard()))
 				{
-					cout << "GAMAOWER" << endl;
+					cout << "GAME OVER" << endl;
 					haveViner();
 				}
 				else
