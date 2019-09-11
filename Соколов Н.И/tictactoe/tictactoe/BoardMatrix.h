@@ -22,7 +22,12 @@ public:
 		}
 
 
+
 	};
+	void SET_BoardMatrix(int x, int y, int hod)
+	{
+		matrix[x][y] = hod;
+	}
 	virtual ~BoardMatrix() {
 		for (int i(0); i < N; i++)
 		delete[] matrix[i];
