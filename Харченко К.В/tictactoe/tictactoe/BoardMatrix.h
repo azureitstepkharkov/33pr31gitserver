@@ -2,37 +2,38 @@
 class BoardMatrix
 {
 protected:
-	int** matrix;
+	int ** matrix;
 	const int N = 3;
-
 public:
 	BoardMatrix()
 	{
-		matrix = new int*[N];
-		for (int i = 0; i < N; i++)
+		matrix = new int *[N];
+		for (int i(0); i < N; i++)
 		{
 			matrix[i] = new int[N];
 		}
-		//начального заполнения 2
-		for (int i = 0; i < N; i++)
+		for (int i(0); i < N; i++)
 		{
-			for (int j = 0; j < N; j++)
+			for (int j(0); j < N; j++)
 			{
 				matrix[i][j] = 2;
 			}
+
 		}
+
+
+
 	};
-	virtual ~BoardMatrix()
+	void SET_BoardMatrix(int x, int y, int hod)
 	{
-		for (int i = 0; i < N; i++)
-		{
-			delete[] matrix[i];
-		}
-		delete[] matrix;
+		matrix[x][y] = hod;
 	}
-	//operator[]
-	
-	int** getBoard()
+	virtual ~BoardMatrix() {
+		for (int i(0); i < N; i++)
+		delete[] matrix[i];
+	};
+
+	int ** GetDoard()
 	{
 		return matrix;
 	}
