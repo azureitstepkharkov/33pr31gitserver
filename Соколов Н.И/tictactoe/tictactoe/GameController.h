@@ -29,13 +29,15 @@ public:
 	};
 	void zapis(int **obj)
 	{
-		countr++;
+		
 		ofstream os;
 		string file123("tictac123.txt");
 		os.open(file123);
 		if (!os.is_open()) cout << "Not open\n";
 		if (os.is_open())
 		{
+			countr++;
+			os << countr << "#" << endl;
 			
 				for (int i(0); i < 3; i++)
 				{
@@ -48,17 +50,13 @@ public:
 				}
 			
 		}
-		//os << countr << "$" << endl;
+		
 		os.close();
 	}
 
 
 	bool readFile(int ** abs)
 	{
-		
-
-
-
 		ifstream fin;
 		fin.open("tictac123.txt");
 		if (!fin.is_open())
@@ -69,43 +67,44 @@ public:
 		else
 		{
 			cout << "OPEN " << endl;
-		}
-		string OBG;
-		string str;
-		string oo;
-		if (fin.peek() == EOF)
-		{
-			return true;
-		}
-		for (int i(0); i < 3; i++)
-		{
-			getline(fin, str);
 
-			if (str.length() > 0)
+			string OBG;
+			string str;
+			string oo;
+			if (fin.peek() == EOF)
 			{
-
-				int pos(0);
-				for (int j(0); j < 3; j++)
-				{
-					
-					int pos_end = str.find("$", pos);
-					OBG = str.substr(pos, pos_end - pos);
-					pos = pos_end + 1;
-					abs[i][j] = atoi(OBG.c_str());
-					
-				}
-				
-				
+				return true;
 			}
-			
-			
+			getline(fin, str);
+			for (int i(0); i < 3; i++)
+			{
+				getline(fin, str);
+
+				if (str.length() > 0)
+				{
+					int pos(0);
+					for (int j(0); j < 3; j++)
+					{
+						int pos_end = str.find("$", pos);
+						OBG = str.substr(pos, pos_end - pos);
+						pos = pos_end + 1;
+						abs[i][j] = atoi(OBG.c_str());
+					}
+				}
+
+			}
+			getline(fin, oo);
+			if (oo.length() > 0)
+			{
+				int pos_end = oo.find("#");
+				OBG = oo.substr(0,pos_end);
+				countr = atoi(OBG.c_str());
+			}
 		}
 		gameBoard->DrawGameBoard(abs);
 		fin.close();
-		
 		return false;
-		
-		
+
 	}
 
 	/*void prin(int **abc)
