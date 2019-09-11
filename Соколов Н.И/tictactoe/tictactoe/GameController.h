@@ -58,7 +58,9 @@ public:
 	bool readFile(int ** abs)
 	{
 		ifstream fin;
+		ifstream fin1;
 		fin.open("tictac123.txt");
+		fin1.open("tictac123.txt");
 		if (!fin.is_open())
 		{
 			cout << "NOT OPEN" << endl;
@@ -75,7 +77,9 @@ public:
 			{
 				return true;
 			}
+			
 			getline(fin, str);
+			getline(fin1, oo);
 			for (int i(0); i < 3; i++)
 			{
 				getline(fin, str);
@@ -93,7 +97,7 @@ public:
 				}
 
 			}
-			getline(fin, oo);
+			
 			if (oo.length() > 0)
 			{
 				int pos_end = oo.find("#");
@@ -154,7 +158,7 @@ public:
 	{
 		
 		cout << "input numbers cell" << endl;
-		if (countr % 2 == 0)
+		
 		{
 			if (readFile(boardMatrix->GetDoard()))
 			{
@@ -162,19 +166,27 @@ public:
 
 				cin >> x;
 				cin >> y;
-			
-				if (checPick(boardMatrix->GetDoard(), x, y))
-				{
-					
-					boardMatrix->SET_BoardMatrix(x, y, 1);
-					zapis(boardMatrix->GetDoard());
-					
+				readFile(boardMatrix->GetDoard());
+				if (countr % 2 == 0) {
+					if (checPick(boardMatrix->GetDoard(), x, y))
+					{
+
+						boardMatrix->SET_BoardMatrix(x, y, 1);
+						zapis(boardMatrix->GetDoard());
+
+					}
+					else
+					{
+						cout << "ZANYTO" << endl;
+						return Game();
+
+					}
 				}
 				else
 				{
-					cout << "ZANYTO" << endl;
+					cout << "Waiting yur partner" << endl;
+					readFile(boardMatrix->GetDoard());
 					return Game();
-
 				}
 			}
 			else {
@@ -190,18 +202,27 @@ public:
 					cout << "X" << endl;
 					cin >> x;
 					cin >> y;
-					if (checPick(boardMatrix->GetDoard(), x, y))
-					{
-						
-						boardMatrix->SET_BoardMatrix(x, y, 1);
-						zapis(boardMatrix->GetDoard());
-						
+					readFile(boardMatrix->GetDoard());
+					if (countr % 2 == 0) {
+						if (checPick(boardMatrix->GetDoard(), x, y))
+						{
+
+							boardMatrix->SET_BoardMatrix(x, y, 1);
+							zapis(boardMatrix->GetDoard());
+
+						}
+						else
+						{
+							cout << "ZANYTO" << endl;
+							return Game();
+
+						}
 					}
 					else
 					{
-						cout << "ZANYTO" << endl;
+						cout << "Waiting yur partner" << endl;
+						readFile(boardMatrix->GetDoard());
 						return Game();
-
 					}
 				}
 				
@@ -209,27 +230,29 @@ public:
 					
 			}
 		}
-		else
-		{
-				cout << "O" << endl;
-				cin >> x;
-				cin >> y;
-				if (checPick(boardMatrix->GetDoard(), x, y))
-				{
-					
-					boardMatrix->SET_BoardMatrix(x, y, 0);
-					zapis(boardMatrix->GetDoard());
-					
-				}
-				else
-				{
-					cout << "ZANYTO" << endl;
-					return Game();
-					
-				}
-			
-			
-		}
+		//else
+		//{
+		//	
+		//	
+		//		/*cout << "O" << endl;
+		//		cin >> x;
+		//		cin >> y;
+		//		if (checPick(boardMatrix->GetDoard(), x, y))
+		//		{
+		//			
+		//			boardMatrix->SET_BoardMatrix(x, y, 0);
+		//			zapis(boardMatrix->GetDoard());
+		//			
+		//		}
+		//		else
+		//		{
+		//			cout << "ZANYTO" << endl;
+		//			return Game();
+		//			
+		//		}*/
+		//	
+		//	
+		//}
 		
 		cout << countr << endl;
 		
