@@ -31,14 +31,20 @@ public:
 					cout << "_" << " ";
 				}
 				else if(board[i][j] == 1)
-					cout << "X" << " ";
+					cout << "X ";
 				else if (board[i][j] == 0)
-					cout << "O" << " ";
+					cout  << "O " ;
 
 			}
-
+			cout << endl;
+			
 		}
+		
 	}
 	virtual ~GameBoard() {};
+	int getN()
+	{
+		return this->N;
+	}
 };
 
