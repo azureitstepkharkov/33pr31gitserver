@@ -31,9 +31,9 @@ public:
 					cout << "_" << " ";
 				}
 				else if(board[i][j] == 1)
-					cout << "<table>\n"<<"\t<tr>\n\t<td>" << " X " << "<\\td>\n\t<\\tl>\n\t<tr>\n\t\n<table> \n";
+					cout << "X ";
 				else if (board[i][j] == 0)
-					cout << "<table>\n" << "\t<tr>\n\t<td>" << " O " << "<\\td>\n\t<\\tl>\n\t<tr>\n\t\n<table> \n ";
+					cout  << "O " ;
 
 			}
 			cout << endl;
