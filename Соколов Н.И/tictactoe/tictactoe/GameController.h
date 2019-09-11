@@ -26,19 +26,26 @@ public:
 
 	void Game()
 	{
+		
 		cout << "input numbers cell" << endl;
 		if (countr % 2 == 0)
 		{
+
 			cout << "X" << endl;
 			cin >> x;
 			cin >> y;
-			boardMatrix->SET_BoardMatrix(x, y, 1);
+			int ** aa = boardMatrix->GetDoard();
+			if (checPick(boardMatrix->GetDoard(), x, y))
+			{
+				boardMatrix->SET_BoardMatrix(x, y, 1);
+			}
+			
 		}
 		else
 		{
+			cout << "O" << endl;
 			cin >> x;
 			cin >> y;
-			cout << "O" << endl;
 			boardMatrix->SET_BoardMatrix(x, y, 0);
 		}
 		countr++;
@@ -51,46 +58,59 @@ public:
 	{
 		gameBoard->DrawGameBoard(boardMatrix->GetDoard());
 	}
-	
+	bool checPick(int ** mt,int x,int y)
+	{
+		if (mt[x][y] == 2)
+		{
+			return true;
+		}
+	}
+
+	bool CheckMatrix(int ** checM)
+	{
+		
+		int rez(0);
+		for (int i(0); i < 3; i++)
+		{
+			for (int j(0); j < 2; j++)
+				if (checM[i][j] == checM[i][j + 1])
+					rez++;
+			if (rez == 2)
+				return rez;
+			else rez = 0;
+
+			for (int j(0); j < 2; j++)
+				if (checM[j][i] == checM[j + 1][i])
+					rez++;
+			if (rez == 2)
+				return true;
+			else rez = 0;
+		}
+		return false;
+	}
+
 	bool haveViner()
 	{
+		
 		bool d = false;
 		if (countr >=5)
 		{
-			int ** aa = boardMatrix->GetDoard();
-
-				int wins(0);
-				for(int i(0);i<2;i++)
-				{
-					for (int j(0); j < 2; j++)
-					if (aa[i][j] == aa[i][j+1])
-						wins++;
-					if (wins == 1)
-					{
-						cout << "POBEDA" << endl;
-						return 1;
-					}
-					wins = 0;
-					for (int j(0); j < 2; j++)
-						if (aa[j][i] == aa[j+1][i])
-							wins++;
-					if (wins == 1)
-					{
-						cout << "POBEDA" << endl;
-						return 1;
-					}
-					if (aa[x][y] == aa[x + 1][y + 1] && aa[x][y] == aa[x + 2][y + 2] || aa[x + 2][y] == aa[x + 1][y + 1] && aa[x + 2][y] == aa[x][y + 2])
-									{
-										cout << "POBEDA" << endl;
-										return 1;	
-									}
-					
-				}
-				return false;
-	
-			
+			int ** checM = boardMatrix->GetDoard();
+			if (CheckMatrix(checM))
+			{
+				cout << "POBEDA" << endl;
+				return 1;
+			}
+			x = 0;
+			y = 0;
+			if (checM[x][y] == checM[x + 1][y + 1] && checM[x][y] == checM[x + 2][y + 2] 
+				||checM[x + 2][y] == checM[x + 1][y + 1] && checM[x + 2][y] == checM[x][y + 2])
+			{
+				cout << "POBEDA" << endl;
+				return 1;
+			}
+			return false;		
 		}
-		
 		if (countr == 9)
 		{
 			cout << "NECHY" << endl;

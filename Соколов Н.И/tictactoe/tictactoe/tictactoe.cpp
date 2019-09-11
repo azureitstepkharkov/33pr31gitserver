@@ -15,7 +15,7 @@ int main()
 	
 	tictactoegame->Game(); // спрашиваю куда ставить Х или О
 	haveViner = tictactoegame->haveViner();// ищу линию Х или О 
-	system("cls");
+	//system("cls");
 	tictactoegame->printresult();// вывожу текущую игровую ситуацию
 	
 	
