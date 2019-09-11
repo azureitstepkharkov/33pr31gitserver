@@ -1,0 +1,16 @@
+#pragma once
+class AnimalEntity
+{
+private:
+	char* gender;
+	int age;
+public:
+	AnimalEntity();
+	AnimalEntity(char* gender_, int age);
+	void Set_Gender(char* gender_);
+	void Set_Age(int age_);
+	char* Get_Gender();
+	int Get_Age();
+	~AnimalEntity();
+};
+
