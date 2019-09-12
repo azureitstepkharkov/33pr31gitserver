@@ -31,7 +31,7 @@ public:
 		
 		ofstream os;
 		
-		os.open("D:\\ZARUBA\\rezalt.txt");
+		os.open("D:\\_testSVNServer\\SokolovNikolai\\rezalt.txt");
 		if (!os.is_open()) cout << "Not open\n";
 		if (os.is_open())
 		{
@@ -59,8 +59,8 @@ public:
 		
 		ifstream fin;
 		ifstream fin1;
-		fin.open("D:\\ZARUBA\\rezalt.txt");
-		fin1.open("D:\\ZARUBA\\rezalt.txt");
+		fin.open("D:\\_testSVNServer\\SokolovNikolai\\rezalt.txt");
+		fin1.open("D:\\_testSVNServer\\SokolovNikolai\\rezalt.txt");
 		if (!fin.is_open())
 		{
 			cout << "NOT OPEN" << endl;
@@ -118,16 +118,16 @@ public:
 		
 			if (readFile(boardMatrix->GetDoard()))
 			{
-				cout << "X" << endl;
+				cout << "O" << endl;
 
 				cin >> x;
 				cin >> y;
 				readFile(boardMatrix->GetDoard());
-				if (countr % 2 == 0) {
+				if (countr % 2 != 0) {
 					if (checPick(boardMatrix->GetDoard(), x, y))
 					{
 
-						boardMatrix->SET_BoardMatrix(x, y, 1);
+						boardMatrix->SET_BoardMatrix(x, y, 0);
 						zapis(boardMatrix->GetDoard());
 
 					}
@@ -172,19 +172,22 @@ public:
 				if (CheckMatrix(boardMatrix->GetDoard()))
 				{
 					cout << "GAMAOWER" << endl;
+					fstream ofs;
+					ofs.open("D:\\_testSVNServer\\SokolovNikolai\\rezalt.txt", ios::out | ios::trunc);
+					ofs << "";
 					haveViner();
 				}
 				else
 				{
-					cout << "X" << endl;
+					cout << "O" << endl;
 					cin >> x;
 					cin >> y;
 					readFile(boardMatrix->GetDoard());
-					if (countr % 2 == 0) {
+					if (countr % 2 != 0) {
 						if (checPick(boardMatrix->GetDoard(), x, y))
 						{
 
-							boardMatrix->SET_BoardMatrix(x, y, 1);
+							boardMatrix->SET_BoardMatrix(x, y, 0);
 							zapis(boardMatrix->GetDoard());
 
 						}
@@ -280,8 +283,10 @@ public:
 			if (CheckMatrix(checM))
 			{
 				cout << "POBEDA" << endl;
-				
-				return 1;
+				fstream ofs;
+				ofs.open("D:\\_testSVNServer\\SokolovNikolai\\rezalt.txt", ios::out | ios::trunc);
+				ofs << "";
+				return true;
 			}
 			cout << checM << endl;
 			x = 0;
@@ -290,7 +295,11 @@ public:
 				||checM[x + 2][y] == checM[x + 1][y + 1] && checM[x + 2][y] == checM[x][y + 2]&& checM[x][y + 2]!=2&& checM[x][y])
 			{
 				cout << "POBEDA" << endl;
-				return 1;
+				fstream ofs;
+				ofs.open("D:\\_testSVNServer\\SokolovNikolai\\rezalt.txt", ios::out | ios::trunc);
+				ofs << "";
+
+				return true;
 			}
 			return false;		
 		}

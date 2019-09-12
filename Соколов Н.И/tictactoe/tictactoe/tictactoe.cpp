@@ -18,7 +18,7 @@ int main()
 	
 	//
 	tictactoegame->printresult();// вывожу текущую игровую ситуацию
-	system("cls");
+	//system("cls");
 	
 	} while (!haveViner); 
 	
