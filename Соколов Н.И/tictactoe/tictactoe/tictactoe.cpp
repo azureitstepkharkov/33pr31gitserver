@@ -9,19 +9,22 @@ int main()
 	GameController* tictactoegame = new GameController();
 	bool haveViner = false;
 	
+	
 
 	do
 	{
-	
 	tictactoegame->Game(); // спрашиваю куда ставить Х или О
 	haveViner = tictactoegame->haveViner();// ищу линию Х или О 
-	//system("cls");
-	tictactoegame->printresult();// вывожу текущую игровую ситуацию
 	
+	//
+	tictactoegame->printresult();// вывожу текущую игровую ситуацию
+	system("cls");
 	
 	} while (!haveViner); 
-
 	
+	//int XUX = tictactoegame->readFile();
+	/*tictactoegame->prin(XUX);*/
+	/*cout << XUX;*/
 	//delete tictactoegame;
 }
 

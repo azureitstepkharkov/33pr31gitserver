@@ -2,6 +2,7 @@
 
 #include"BoardMatrix.h"
 #include"GameBoard.h"
+#include<fstream>
 class GameController
 {
 private:
@@ -18,53 +19,216 @@ public:
 		gameBoard = new GameBoard();
 		boardMatrix = new BoardMatrix();
 	}
+	
+
 	virtual ~GameController()
 	{
 		delete gameBoard;
 		delete boardMatrix;
 	};
-
-	void Game()
+	void zapis(int **obj)
 	{
 		
-		cout << "input numbers cell" << endl;
-		if (countr % 2 == 0)
+		ofstream os;
+		
+		os.open("D:\\ZARUBA\\rezalt.txt");
+		if (!os.is_open()) cout << "Not open\n";
+		if (os.is_open())
 		{
-
-				cout << "X" << endl;
-				cin >> x;
-				cin >> y;
-				if (checPick(boardMatrix->GetDoard(), x, y))
+			countr++;
+			os << countr << "#" << endl;
+			
+				for (int i(0); i < 3; i++)
 				{
-					boardMatrix->SET_BoardMatrix(x, y, 1);
-				}
-				else
-				{
-					cout << "ZANYTO" << endl;
-					return Game();
+					for (int j(0); j < 3; j++)
+					{
+						os << obj[i][j] << "$";;
+					}
+					os << endl;
 					
 				}
 			
+		}
+		
+		os.close();
+	}
+
+
+	bool readFile(int ** abs)
+	{
+		
+		ifstream fin;
+		ifstream fin1;
+		fin.open("D:\\ZARUBA\\rezalt.txt");
+		fin1.open("D:\\ZARUBA\\rezalt.txt");
+		if (!fin.is_open())
+		{
+			cout << "NOT OPEN" << endl;
+			return false;
 		}
 		else
 		{
-				cout << "O" << endl;
+			cout << "OPEN " << endl;
+
+			string OBG;
+			string str;
+			string oo;
+			if (fin.peek() == EOF)
+			{
+				return true;
+			}
+			
+			getline(fin, str);
+			getline(fin1, oo);
+			for (int i(0); i < 3; i++)
+			{
+				getline(fin, str);
+
+				if (str.length() > 0)
+				{
+					int pos(0);
+					for (int j(0); j < 3; j++)
+					{
+						int pos_end = str.find("$", pos);
+						OBG = str.substr(pos, pos_end - pos);
+						pos = pos_end + 1;
+						abs[i][j] = atoi(OBG.c_str());
+					}
+				}
+
+			}
+			
+			if (oo.length() > 0)
+			{
+				int pos_end = oo.find("#");
+				OBG = oo.substr(0,pos_end);
+				countr = atoi(OBG.c_str());
+			}
+		}
+		gameBoard->DrawGameBoard(abs);
+		fin.close();
+		return false;
+
+	}
+	void Game()
+	{
+
+		cout << "input numbers cell" << endl;
+		
+		
+			if (readFile(boardMatrix->GetDoard()))
+			{
+				cout << "X" << endl;
+
 				cin >> x;
 				cin >> y;
-				if (checPick(boardMatrix->GetDoard(), x, y))
-				{
-					boardMatrix->SET_BoardMatrix(x, y, 0);
+				readFile(boardMatrix->GetDoard());
+				if (countr % 2 == 0) {
+					if (checPick(boardMatrix->GetDoard(), x, y))
+					{
+
+						boardMatrix->SET_BoardMatrix(x, y, 1);
+						zapis(boardMatrix->GetDoard());
+
+					}
+					else
+					{
+						cout << "ZANYTO" << endl;
+						return Game();
+
+					}
 				}
 				else
 				{
-					cout << "ZANYTO" << endl;
+					cout << "Waiting yur partner" << endl;
+					readFile(boardMatrix->GetDoard());
 					return Game();
-					
 				}
-			
-			
-		}
-		countr++;
+				/*if (countr % 2 != 0) {
+					if (checPick(boardMatrix->GetDoard(), x, y))
+					{
+
+						boardMatrix->SET_BoardMatrix(x, y, 0);
+						zapis(boardMatrix->GetDoard());
+
+					}
+					else
+					{
+						cout << "ZANYTO" << endl;
+						return Game();
+
+					}
+				}
+				else
+				{
+					cout << "Waiting yur partner" << endl;
+					readFile(boardMatrix->GetDoard());
+					return Game();
+				}*/
+			}
+			else {
+				
+				
+				if (CheckMatrix(boardMatrix->GetDoard()))
+				{
+					cout << "GAMAOWER" << endl;
+					haveViner();
+				}
+				else
+				{
+					cout << "X" << endl;
+					cin >> x;
+					cin >> y;
+					readFile(boardMatrix->GetDoard());
+					if (countr % 2 == 0) {
+						if (checPick(boardMatrix->GetDoard(), x, y))
+						{
+
+							boardMatrix->SET_BoardMatrix(x, y, 1);
+							zapis(boardMatrix->GetDoard());
+
+						}
+						else
+						{
+							cout << "ZANYTO" << endl;
+							return Game();
+
+						}
+					}
+					else
+					{
+						cout << "Waiting yur partner" << endl;
+						readFile(boardMatrix->GetDoard());
+						return Game();
+					}
+					
+					/*if (countr % 2 != 0) {
+						if (checPick(boardMatrix->GetDoard(), x, y))
+						{
+
+							boardMatrix->SET_BoardMatrix(x, y, 0);
+							zapis(boardMatrix->GetDoard());
+
+						}
+						else
+						{
+							cout << "ZANYTO" << endl;
+							return Game();
+
+						}
+					}
+					else
+					{
+						cout << "Waiting yur partner" << endl;
+						readFile(boardMatrix->GetDoard());
+						return Game();
+					}*/
+				}
+				
+				
+					
+			}
+		
 		cout << countr << endl;
 		
 		
@@ -90,14 +254,14 @@ public:
 		for (int i(0); i < 3; i++)
 		{
 			for (int j(0); j < 2; j++)
-				if (checM[i][j] == checM[i][j + 1])
+				if (checM[i][j] == checM[i][j + 1]&& checM[i][j + 1]!=2)
 					rez++;
 			if (rez == 2)
-				return rez;
+				return true;
 			else rez = 0;
 
 			for (int j(0); j < 2; j++)
-				if (checM[j][i] == checM[j + 1][i])
+				if (checM[j][i] == checM[j + 1][i]&& checM[j + 1][i]!=2)
 					rez++;
 			if (rez == 2)
 				return true;
@@ -116,12 +280,14 @@ public:
 			if (CheckMatrix(checM))
 			{
 				cout << "POBEDA" << endl;
+				
 				return 1;
 			}
+			cout << checM << endl;
 			x = 0;
 			y = 0;
 			if (checM[x][y] == checM[x + 1][y + 1] && checM[x][y] == checM[x + 2][y + 2] 
-				||checM[x + 2][y] == checM[x + 1][y + 1] && checM[x + 2][y] == checM[x][y + 2])
+				||checM[x + 2][y] == checM[x + 1][y + 1] && checM[x + 2][y] == checM[x][y + 2]&& checM[x][y + 2]!=2&& checM[x][y])
 			{
 				cout << "POBEDA" << endl;
 				return 1;
