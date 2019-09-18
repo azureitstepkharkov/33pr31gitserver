@@ -5,44 +5,22 @@ class AnimalEntity
 {
 protected:
 	int age;
-	string sex;
+	string gender;
+
+	AnimalEntity() {}
+	AnimalEntity(const AnimalEntity& obj) {}
 public:
 
-	void setAge(int age)
-	{
-		if (age > 0)
-			this->age = age;
-	}
+	void setAge(int age) { this->age = age; }
+	void setSex(string sex) { this->gender = sex; }
 
-	void setSex(string sex)
-	{
-		this->sex = sex;
-	}
-
-	int getAge()
-	{
-		return age;
-	}
-
-	string getSex()
-	{
-		return sex;
-	}
+	int getAge() { return age; }
+	string getSex() { return gender; }
 
 	AnimalEntity(int age, string sex)
 	{
 		this->age = age;
-		this->sex = sex;
+		this->gender = sex;
 	}
-
-	friend ostream& operator<< (ostream& os, AnimalEntity& data)
-	{
-		os << "age = " << data.age << " sex = " << data.sex << endl;
-		return os;
-	}
-
-	AnimalEntity() {}
-	~AnimalEntity() {};
 
 };
-

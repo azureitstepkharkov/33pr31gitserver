@@ -4,44 +4,26 @@
 using namespace std;
 class HumanEntity : public AnimalEntity
 {
-private:
+protected:
 	string name;
 	string surname;
-public:
+
+	HumanEntity(const HumanEntity& obj) {}
 	HumanEntity() {};
-	~HumanEntity() {};
+public:
 
-	void setName(string name)
-	{
-		this->name = name;
-	}
+	void setName(string name) { this->name = name; }
+	void setSurname() { this->surname = surname; }
 
-	void setSurname()
-	{
-		this->surname = surname;
-	}
+	string getName() { return name; }
+	string getSurname() { return surname; }
 
-	string getName()
-	{
-		return name;
-	}
 
-	string getSurname()
-	{
-		return surname;
-	}
-
-	friend ostream& operator<< (ostream& os, HumanEntity& data)
-	{
-		os << "name = " << data.name << " surname = " << data.surname() << endl;
-		return os;
-	}
-
-	HumanEntity(string name, string surname)
+	HumanEntity(string name, string surname, int age, string sex)
+		:AnimalEntity(age, sex)
 	{
 		this->name = name;
 		this->surname = surname;
 	}
 
 };
-
