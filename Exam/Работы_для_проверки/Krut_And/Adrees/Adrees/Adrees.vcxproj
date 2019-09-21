@@ -154,6 +154,7 @@
     <ClInclude Include="AdressInfo.h" />
     <ClInclude Include="AnimalEntity.h" />
     <ClInclude Include="Collection.h" />
+    <ClInclude Include="Deportment.h" />
     <ClInclude Include="Employee.h" />
     <ClInclude Include="HumanEntity.h" />
     <ClInclude Include="Person.h" />
