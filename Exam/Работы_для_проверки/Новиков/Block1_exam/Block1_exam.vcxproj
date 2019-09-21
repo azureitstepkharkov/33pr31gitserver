@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{6BB2C792-98BD-4303-AA3C-8F7AAA1066A6}</ProjectGuid>
+    <ProjectGuid>{F61BFF93-17A8-4481-9B32-2D56BC1E9B15}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ExamBlock1</RootNamespace>
+    <RootNamespace>Block1exam</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -152,12 +152,13 @@
     <ClInclude Include="Department.h" />
     <ClInclude Include="Employee.h" />
     <ClInclude Include="HumanEntity.h" />
+    <ClInclude Include="MyList.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Exam_Block1.cpp" />
+    <ClCompile Include="Block1_exam.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
