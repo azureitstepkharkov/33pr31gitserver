@@ -12,37 +12,19 @@ class Person : public AdressInfo
 {
 private:
 	string phoneNumber;
-	list<AdressInfo*> adress;
+
+	Person() {};
+	Person(const Person& obj) {}
 public:
 
-	void setPhoneNumber(string phoneNumber)
+	void setPhoneNumber(string phoneNumber) { this->phoneNumber = phoneNumber; }
+
+	string getPhoneNumber() { return phoneNumber; }
+
+	Person(string phoneNumber, string City, string Street, string HouseNumber, string OfficeOrApartmentNumber)
+		:AdressInfo(City, Street, HouseNumber, OfficeOrApartmentNumber)
 	{
 		this->phoneNumber = phoneNumber;
 	}
 
-	void pushBackAdress(string phoneNumber, string City, string Street, string HouseNumber, string OfficeOrApartmentNumber)
-	{
-		AdressInfo* m = new AdressInfo(City, Street, HouseNumber, OfficeOrApartmentNumber);
-		adress.push_back(m);
-	}
-
-	void printadress()
-	{
-		for_each(adress.begin(), adress.end(), printAdress);
-	}
-
-	string getPhoneNumber()
-	{
-		return phoneNumber;
-	}
-
-	friend ostream& operator<< (ostream& os, Person& data)
-	{
-		os << "phoneNumber = " << data.phoneNumber << " adress = " << data.printadress() << endl;
-		return os;
-	}
-
-	Person() {};
-	~Person() {};
 };
-
