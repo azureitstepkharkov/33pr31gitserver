@@ -47,12 +47,20 @@ int main()
 
 	vector<Employee*> MEN;
 
+	Employee* info1 = new Collection(
+		"Харьков", "Победа", "48Б", "128Б",
+		"Мужской", "17", "Андрей", "Крутовой",
+		"пр.Победы", "380678015436", "Программист",
+		"2343 2451 4534 2313", "4500", "Разработка чего либо", "Андрей", "Рома"
+	);
+
+	MEN.push_back(info1);
+
 	vector<Employee*>::iterator ptr;
 
 	cout << "Before sorting: " << endl;
-
 	for (ptr = MEN.begin(); ptr < MEN.end(); ptr++)
-		cout << *ptr << " ";
+		cout << *(*ptr) << " ";
 
 	system("pause");
 	return 0;
