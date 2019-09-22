@@ -3,6 +3,11 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include<algorithm> //хранить алгоритмы сортировки поиска
+#include<vector> //класс динамический массив, замена int* paray = new int[N]
+#include<functional> //здесь хроанятся функтары. Это выражения вида: greater<int>(), greater_equal<int>(), less_equal<int>()
+#include<string> //клаяя для работы со строками, замена char*
+#include<list> //класс двух направленый список, замена программирования списка в ручную (см. проект ListItem)
 
 using namespace std;
 

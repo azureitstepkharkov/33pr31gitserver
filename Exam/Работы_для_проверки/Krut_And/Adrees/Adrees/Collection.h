@@ -27,7 +27,6 @@ public:
 		this->card_account = card_account;
 		this->salary = salary;
 		this->name_otdel = name_otdel;
-		this->sotrudnik = sotrudnik;
 		this->name_nachalnik_otdela = name_nachalnik_otdela;
 	};
 
@@ -47,7 +46,6 @@ public:
 			"Карточный счет: " << info.get_card_account() << endl <<
 			"Зарплата: " << info.get_salary() << endl <<
 			"Отдел: " << info.get_name_otdel() << endl <<
-			"Сотрудник: " << info.get_sotrudnik() << endl <<
 			"Начальник отдела: " << info.get_name_nachalnik_otdela() << endl;
 		return out_data;
 	};
