@@ -32,5 +32,13 @@ public:
 	string get_card_account() { return this->card_account; }
 	string get_salary() { return this->salary; }
 
+	friend ostream&  operator<< (ostream& out_data, Employee& MEN)
+	{
+		out_data << "Должность: " << MEN.get_position() << endl <<
+			"Карточный счет: " << MEN.get_card_account() << endl <<
+			"Зарплата: " << MEN.get_salary() << endl;
+		return out_data;
+	};
+
 	~Employee() {};
 };
