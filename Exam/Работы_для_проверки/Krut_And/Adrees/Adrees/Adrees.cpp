@@ -40,6 +40,11 @@ int main()
 
 	cout << endl;
 
+	Deportment dep("IT", "BOSS");
+	dep.set_sotrudniki(Employee("Андрей", "Крутовой", "2343 2451 4534 2313"));
+	dep.get_sotrudniki();
+	cout << endl;
+
 	vector<Employee*> MEN;
 
 	vector<Employee*>::iterator ptr;
