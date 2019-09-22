@@ -82,3 +82,12 @@ AdressInfo::~AdressInfo()
 	delete[] building_number;
 	delete[] apartment_number;
 }
+
+ostream & operator<<(ostream & output, AdressInfo & adress)
+{
+	output << "City: " << adress.city << endl;
+	output << "Street: " << adress.street << endl;
+	output << "Building num.:  " << adress.building_number << endl;
+	output << "Apartment num.: " << adress.apartment_number << endl;
+	return output;
+}

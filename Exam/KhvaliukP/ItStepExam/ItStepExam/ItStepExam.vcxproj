@@ -154,7 +154,7 @@
     <ClInclude Include="AdressInfo.h" />
     <ClInclude Include="AnimalEntity.h" />
     <ClInclude Include="Department.h" />
-    <ClInclude Include="Empoyee.h" />
+    <ClInclude Include="Employee.h" />
     <ClInclude Include="HumanEntity.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Person.h" />
@@ -163,7 +163,7 @@
     <ClCompile Include="AdressInfo.cpp" />
     <ClCompile Include="AnimalEntity.cpp" />
     <ClCompile Include="Department.cpp" />
-    <ClCompile Include="Empoyee.cpp" />
+    <ClCompile Include="Employee.cpp" />
     <ClCompile Include="HumanEntity.cpp" />
     <ClCompile Include="ItStepExam.cpp" />
     <ClCompile Include="pch.cpp">

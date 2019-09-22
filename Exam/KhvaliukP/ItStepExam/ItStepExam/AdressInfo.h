@@ -1,4 +1,6 @@
 #pragma once
+#include<iostream>
+using namespace std;
 class AdressInfo
 {
 protected:
@@ -21,6 +23,8 @@ public:
 	char* Get_ApartmentNumber();
 		AdressInfo(AdressInfo& adressinfo) {};
 	~AdressInfo();
+	friend ostream& operator << (ostream& output, AdressInfo& adress);
 
+	friend class AnimalEntity;
 };
 

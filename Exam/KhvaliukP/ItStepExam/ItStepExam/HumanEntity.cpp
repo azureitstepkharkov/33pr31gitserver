@@ -47,3 +47,10 @@ HumanEntity::~HumanEntity()
 	delete[] name;
 	delete[] surname;
 }
+
+ostream & operator<<(ostream & output, HumanEntity & hmnentity)
+{
+	output << "Name: " << hmnentity.name << endl;
+	output << "Surname: " << hmnentity.surname << endl;
+	return output;
+}

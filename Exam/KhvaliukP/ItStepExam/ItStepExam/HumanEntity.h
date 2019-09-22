@@ -1,5 +1,6 @@
 #pragma once
-class HumanEntity
+#include"AnimalEntity.h"
+class HumanEntity: public AnimalEntity
 {
 private:
 	char* name;
@@ -11,7 +12,8 @@ public:
 	void Set_Surname(char* surname_);
 	char* Get_Name();
 	char* Get_Surname();
-
+	friend ostream& operator << (ostream& output, HumanEntity& hmnentity);
+	friend class Person;
 	~HumanEntity();
 };
 

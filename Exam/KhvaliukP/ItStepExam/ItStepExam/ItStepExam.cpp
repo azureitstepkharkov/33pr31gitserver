@@ -4,16 +4,16 @@
 #include "pch.h"
 #include <iostream>
 #include"AdressInfo.h"
+#include"AnimalEntity.h"
+#include"HumanEntity.h"
+#include"Person.h"
+#include"Employee.h"
+#include"Department.h"
 
 int main()
 {
     std::cout << "Hello World!\n"; 
-	char qwe[10] = { "qwerty" };
-	char* qwe_ = new char[strlen(qwe) + 1];
-	strcpy_s(qwe_, strlen(qwe) + 1, qwe);
-	AdressInfo ai;
-	ai.Set_City(qwe_);
-	std::cout << ai.Get_City() << std::endl;
+
 	system("pause");
 }
 
