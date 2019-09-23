@@ -3,52 +3,24 @@
 #include<string>
 #include<iostream>
 using namespace std;
-class Employee : public Person
+class Employee
 {
-private:
+protected:
 	string position;
 	string BankCardAccount;
 	double salary;
-public:
+
 	Employee() {};
-	~Employee() {};
+	Employee(const Employee& obj) {}
+public:
+	
+	void setPosition(string position){this->position = position;}
+	void setBankCardAccount(string BankCardAccount){this->BankCardAccount = BankCardAccount;}
+	void setSalary(double salary){this->salary = salary;}
 
-	friend ostream& operator<< (ostream& os, Employee& data)
-	{
-		os << "BankCardAccount = " << data.BankCardAccount << " position = " << data.position
-			<< " salary = " << data.salary << endl;
-		return os;
-	}
-
-	void setPosition(string position)
-	{
-		this->position = position;
-	}
-
-	void setBankCardAccount(string BankCardAccount)
-	{
-		this->BankCardAccount = BankCardAccount;
-	}
-
-	void setSalary(double salary)
-	{
-		this->salary = salary;
-	}
-
-	string getPosition()
-	{
-		return position;
-	}
-
-	string getBankCardAccount()
-	{
-		return BankCardAccount;
-	}
-
-	double getSalary()
-	{
-		return salary;
-	}
+	string getPosition(){return position;}
+	string getBankCardAccount(){return BankCardAccount;}
+	double getSalary(){return salary;}
 
 	Employee(string position, string BankCardAccount, double salary)
 	{
@@ -57,13 +29,4 @@ public:
 		this->salary = salary;
 	}
 
-	void printEmployee()
-	{
-		cout << "position = " << position << " ";
-		cout << "BankCardAccount = " << BankCardAccount << " ";
-		cout << "salary = " << salary << " ";
-
-	}
-
 };
-
