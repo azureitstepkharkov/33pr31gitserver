@@ -152,7 +152,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
-    <ClInclude Include="SalaryCalc.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Exam_Shevchenko_33PR31.cpp" />

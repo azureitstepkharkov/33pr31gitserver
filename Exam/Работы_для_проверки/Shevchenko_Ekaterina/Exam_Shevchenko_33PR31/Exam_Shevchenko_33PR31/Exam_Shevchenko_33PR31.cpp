@@ -3,81 +3,14 @@
 
 #include "pch.h"
 #include <iostream>
-#include<algorithm>
 #include<vector>
 #include<functional>
 #include<string>
 #include<list>
 #include<ostream>
-#include"SalaryCalc.h"
 using namespace std;
 
-////////////////////
-//
-//struct ISalaryCalculator
-//{
-//	virtual double calcSalary() = 0;
-//};
-////1 - оклад
-//class Rule1 : public ISalaryCalculator
-//{
-//protected:
-//	double base;
-//public:
-//	Rule1() { base = 0; }
-//	Rule1(double base) { this->base = base; }
-//	virtual double calcSalary()
-//	{
-//		return base;
-//	}
-//};
-//
-////2 - оплата по часам
-//class Rule2 : public ISalaryCalculator
-//{
-//protected:
-//	double hour;
-//	double rate;
-//public:
-//	Rule2() { hour = 0; rate = 0; }
-//	Rule2(double hour, double rate) { this->hour = hour; this->rate = rate; }
-//	virtual double calcSalary()
-//	{
-//		return hour * rate;
-//	}
-//};
-//
-////3 - оплата с бонусами //изменить под процент от выручки
-//class Rule3 : public ISalaryCalculator
-//{
-//protected:
-//	double base;
-//	double percent;
-//	double bonus;
-//public:
-//	Rule3() { base = 0; percent = 0; bonus = 0; }
-//	Rule3(double base, double percent, double bonus)
-//	{
-//		this->base = base; this->percent = percent; this->bonus = bonus;
-//	}
-//	virtual double calcSalary()
-//	{
-//		return base + base * percent + bonus;
-//	}
-//};
-//
-//struct CalcInfo
-//{
-//	double base;//база - оклад
-//	double percent;//значение %
-//	double total;//сумма продаж или 
-//	double bonus;//бонус
-//	double bonus_percent;//процент бонуса
-//	double hour;//количество часов
-//	double rate_per_hour;//стоимость часа
-//};
-//
-////////////
+
 class AdressInfo
 {
 protected:
@@ -87,7 +20,14 @@ protected:
 	string HouseHumber;
 	unsigned int OfficeOrApartmentNum;
 AdressInfo() {};
-AdressInfo(AdressInfo& adr) {};
+public:
+AdressInfo(AdressInfo& adr) {
+	this->City = adr.City;
+	this->TypeStreet = adr.TypeStreet;
+	this->Street = adr.Street;
+	this->HouseHumber = adr.HouseHumber;
+	this->OfficeOrApartmentNum = adr.OfficeOrApartmentNum;
+};
 public:
 	AdressInfo(string Ct, string TpStrt, string Strt, string housNm, unsigned int OfAptmNm)
 	{
@@ -197,36 +137,43 @@ protected:
 		
 		return out_data;
 	}
+
 	~Person() {};
 };
 
 
-class Employee: public Person, public ISalaryCalculator
+class Employee: public Person, public AdressInfo
 {
 protected:
 	string Position;
 	string BankAccount;
-	//string Salary;
-
-	double base;//база - оклад
-	double percent;//значение %
-	double total;//сумма продаж или бонус
-	double hour;//количество часов
-	double rate_per_hour;
-
-	ISalaryCalculator* salaryCalc;
-
-	
-	Employee(Employee& emp) {};
-public:
+	string Salary;
 	Employee() {};
+	
+public:
+	/*Employee(Employee& emp) {
+		this->Position = emp.Position;
+		this->BankAccount = emp.BankAccount;
+		this->Salary = emp.Salary;
+		this->phone = emp.phone;
+		this->sex = emp.sex;
+		this->age = emp.age;
+		this->Name = emp.Name;
+		this->Surname = emp.Surname;
+		this->City = emp.City;
+		this->TypeStreet = emp.TypeStreet;
+		this->Street = emp.Street;
+		this->HouseHumber = emp.HouseHumber;
+		this->OfficeOrApartmentNum = emp.OfficeOrApartmentNum;
+		
+	};*/
 	Employee(string pos, string acc, string salary,string phone, string ct, string tpstrt, string strt, string hsnum,
 			unsigned int apart, string name, string surname, string sex, unsigned int age)
 				:Person(phone, ct, tpstrt, strt, hsnum, apart, name, surname, sex, age)
 	{
 		this->Position = pos;
 		this->BankAccount = acc;
-		//this->Salary = salary;
+		this->Salary = salary;
 	}
 	friend ostream& operator<<(ostream& out_data, Employee& data)
 	{
@@ -234,21 +181,162 @@ public:
 			data.adress->get_city() << " " << data.adress->get_typestreet() << " " <<
 			data.adress->get_street() << " " << data.adress->get_housenum() << " "
 			<< data.adress->get_apartmentnum() << " " << data.get_sex()
-			<< " " << data.get_age() << data.Position << " " << data.BankAccount /*<<
-			" " << data.Salary << " "*/ << endl;
+			<< " " << data.get_age() << data.Position << " " << data.BankAccount <<
+			" " << data.Salary << " " << endl;
 		return out_data;
 	}
-	//////////////////////////////////
 
-	
-	//"универсальный" конструктор
-	Employee(string pos, string acc, string phone, string ct, string tpstrt, 
-		string strt, string hsnum,unsigned int apart, string name, string surname, string sex,
-		unsigned int age, int codePosition, CalcInfo info)
-		:Person(phone, ct, tpstrt, strt, hsnum, apart, name, surname, sex, age)
+	~Employee() {};
+};
+
+
+
+class Department
+{
+protected:
+	string DepartmentName;
+	vector<Employee>employees;
+	HumanEntity* Cheif;
+	Department() {};
+	Department(Department& dep) {};
+public:
+	Department(string depname, string name, string surname, string sex,
+		unsigned int age)
 	{
-		this->BankAccount = acc;
-		this->Position = pos;
+		this->DepartmentName = depname;
+		this->Cheif = new HumanEntity(name, surname, sex, age);
+	};
+	friend ostream& operator<<(ostream& out_data, Department& data)
+	{
+		out_data << data.DepartmentName   << " " << data.Cheif
+			<< endl;
+		return out_data;
+	}
+	void set_Employee(Employee a) {
+		this->employees.push_back(a);
+	}
+	void get_Employees()
+	{
+		for (int i = 0; i < this->employees.size(); i++)
+		{
+			cout << employees[i];
+		}
+	}
+	~Department() {};
+};
+
+//////////////////////////////
+//////////////////////////////
+//Расчет зарплаты////////////
+///////////////////////////
+////////////////////////////
+
+struct ISalaryCalculator
+{
+	virtual double calcSalary() = 0;
+};
+
+
+//1 - оклад
+class Rule1 : public ISalaryCalculator
+{
+protected:
+	double base;
+public:
+	Rule1() { base = 0; }
+	Rule1(double base) { this->base = base; }
+	virtual double calcSalary()
+	{
+		return base;
+	}
+};
+//2 - оплата по часам
+class Rule2 : public ISalaryCalculator
+{
+protected:
+	double hour;
+	double rate;
+public:
+	Rule2() { hour = 0; rate = 0; }
+	Rule2(double hour, double rate) { this->hour = hour; this->rate = rate; }
+	virtual double calcSalary()
+	{
+		return hour * rate;
+	}
+};
+//3 - оплата с бонусами
+class Rule3 : public ISalaryCalculator
+{
+protected:
+	double base;
+	double percent;
+	double total;
+public:
+	Rule3() { base = 0; percent = 0; total = 0; }
+	Rule3(double base, double percent, double total)
+	{
+		this->base = base; this->percent = percent; this->total = total;
+	}
+	virtual double calcSalary()
+	{
+		return base + total * percent;
+	}
+};
+//оклад + премия
+class Rule4 : public ISalaryCalculator
+{
+protected:
+	double salary;
+	double bonus;
+public:
+
+	Rule4() { this->salary = 0; this->bonus = 0; }
+	Rule4(double salary, double bonus)
+	{
+		this->salary = salary; this->bonus = bonus;
+	}
+	virtual double calcSalary()
+	{
+		return salary + bonus;
+	}
+};
+//все данные, которые могут понадобиться для расчета ЗП
+struct CalcInfo
+{
+	double base;//база - оклад
+	double percent;//значение %
+	double total;//сумма продаж или 
+	double bonus;//бонус
+	double hour;//количество часов
+	double rate_per_hour;//стоимость часа
+};
+
+class EmployeeSalary : public HumanEntity, public ISalaryCalculator
+{
+protected:
+	
+	double base;
+	double percent;
+	double total;
+	double hour;
+	double rate_per_hour;
+	string position;
+	ISalaryCalculator* salaryCalc;
+	
+public:
+	virtual double calcSalary()
+	{
+		if (this->salaryCalc == NULL)
+			return 0;
+		else
+			return this->salaryCalc->calcSalary();
+	}
+
+	EmployeeSalary(string name,string surname,string sex, unsigned int age,
+		string position, int codePosition, CalcInfo info)
+		:HumanEntity(name, surname, sex, age)
+	{
+		this->position = position;
 		this->base = info.base;
 		this->total = info.bonus;
 		this->percent = info.percent;
@@ -271,169 +359,69 @@ public:
 		return salaryCalc;
 	}
 
-	///////////////////////////////
-
-	~Employee() {};
+	friend ostream& operator<< (ostream& os, EmployeeSalary& data)
+	{
+		os << "name = " << data.Name <<" Suraname = " << data.Surname<< " sex = " << data.sex
+			<< " age = " << data.age << " position = " << data.position
+			<< " salary = " << data.calcSalary() << endl;
+		return os;
+	}
+	//
 };
 
-//Employee vector;
 
-class Department/*:public Employee, public ISalaryCalculator*/
-{
-protected:
-	string DepartmentName;
-	//Employee* EmployeesList;
-	vector<Employee>employees;
-	HumanEntity* Cheif;
-	Department() {};
-	Department(Department& dep) {};
-public:
-	Department(Employee vect, string depname, string pos, string acc, string phone, string ct, string tpstrt,
-		string strt, string hsnum, unsigned int apart, string name, string surname, string sex,
-		unsigned int age, int codePosition, CalcInfo info)
-	{
-		this->DepartmentName = depname;
-		 
-		/*this->EmployeesList = new Employee(pos, acc,
-			phone, ct, tpstrt,
-			strt, hsnum, apart, name , surname, sex, age, codePosition, info);*/
-		this->Cheif = new HumanEntity(name, surname, sex, age);
-	};
-	friend ostream& operator<<(ostream& out_data, Department& data)
-	{
-		out_data << data.DepartmentName  /*" " << data.EmployeesList <<*/ << " " << data.Cheif
-			<< endl;
-		return out_data;
-	}
-	~Department() {};
-};
-
-//class EmployeeSalary : public HumanEntity, public ISalaryCalculator
-//{
-//protected:
-//	//составляющие части зп для расчета:
-//	double base;//база - оклад
-//	double percent;//значение %
-//	double total;//сумма продаж или бонус
-//	double hour;//количество часов
-//	double rate_per_hour;//стоимость часа
-//	//вопрос: а нужно ли их здесь вообще хранить?
-//	string position;//название должности
-//	ISalaryCalculator* salaryCalc;//механизм расчета ЗП
-//	//конструктор по умолчанию
-//	//Employee() { salaryCalc = NULL; }
-//	//копирующий конструктор по умолчанию
-//	//Employee(const Employee& obj) {}
-//public:
-//	//
-//	virtual double calcSalary()
-//	{
-//		if (this->salaryCalc == NULL)
-//			return 0;
-//		else
-//			return this->salaryCalc->calcSalary();
-//	}
-	/*
-	virtual ~Employee()
-	{
-		if (salaryCalc != NULL)
-		{
-			delete salaryCalc;
-		}
-	}
-	*/
-	////конструктор для должностей с оплатой по правилу 1
-	//EmployeeSalary(string name, string surname, string sex, unsigned int age, string position, double base)
-	//	: HumanEntity(name, surname, sex, age)
-	//{
-	//	this->position = position;
-	//	this->base = base;
-	//	this->hour = 0;
-	//	this->rate_per_hour = 0;
-	//	this->percent = 0;
-	//	this->total = 0;
-	//	this->salaryCalc = new Rule1(base);
-	//}
-	////конструктор для должностей с оплатой по правилу 2
-	//EmployeeSalary(string name, string surname, string sex, unsigned int age, string position, double h, double rate)
-	//	:HumanEntity(name,  surname,  sex, age)
-	//{
-	//	this->position = position;
-	//	this->hour = h;
-	//	this->rate_per_hour = rate;
-	//	this->percent = 0;
-	//	this->total = 0;
-	//	this->base = 0;
-	//	this->salaryCalc = new Rule2(this->hour, this->rate_per_hour);
-	//}
-	////конструктор для должностей с оплатой по правилу 3
-	//EmployeeSalary(string name, string surname, string sex, unsigned int age, string position, double base, double percent, double bonus)
-	//	: HumanEntity(name, surname, sex, age)
-	//{
-	//	this->position = position;
-	//	this->base = base;
-	//	this->total = bonus;
-	//	this->percent = percent;
-	//	this->hour = 0;
-	//	this->rate_per_hour = 0;
-	//	this->salaryCalc = new Rule3(base, percent, bonus);
-	//}
-	////"универсальный" конструктор
-	//EmployeeSalary(string name, string surname, string sex, unsigned int age, string position, int codePosition, CalcInfo info)
-	//	:HumanEntity(name, surname, sex, age)
-	//{
-	//	this->position = position;
-	//	this->base = info.base;
-	//	this->total = info.bonus;
-	//	this->percent = info.percent;
-	//	this->hour = info.hour;
-	//	this->rate_per_hour = info.rate_per_hour;
-	//	this->salaryCalc = createSalarycalcRule(codePosition, info);
-	//}
-	//static ISalaryCalculator* createSalarycalcRule(int codePosition, CalcInfo info)
-	//{
-	//	ISalaryCalculator* salaryCalc = NULL;
-	//	switch (codePosition)
-	//	{
-	//	case 1: salaryCalc = new Rule1(info.base); break;
-	//	case 2: salaryCalc = new Rule2(info.hour, info.rate_per_hour); break;
-	//	case 3: salaryCalc = new Rule3(info.base, info.percent, info.bonus);
-	//		break;
-	//	default: salaryCalc = new Rule1(info.base);
-	//		break;
-	//	}
-	//	return salaryCalc;
-	//}
-	////перегрузка обязательных операторов
-	//friend ostream& operator<< (ostream& os, EmployeeSalary& data)
-	//{
-	//	os << "name = " << data.get_name() << " position = " << data.position
-	//		<< " salary = " << data.calcSalary() << endl;
-	//	return os;
-	//}
-	////
-//};
 int main()
 {
    cout << "My Exam!!!\n"; 
 
-   Person a("+380994597228", "Kharkov", "street", "Sumskaya", "45a", 84, "Aleksandr", "Petrov", "male", 23);
+   //Person a("+380994597228", "Kharkov", "street", "Sumskaya", "45a", 84, "Aleksandr", "Petrov", "male", 23);
 
-   CalcInfo info1;
-   info1.base = 7500;
-   info1.percent = 15;
-   info1.bonus = 100000;
+   Employee b("Programmer", "5168755434678912", "20000", "0994567132", "Kharkov", "prospect",
+	   "Moskovskiy", "248a", 47, "Andrey", "Ivanov", "man", 25);
+   Employee c("Sailer", "5168755434934729", "18000", "0994593456", "Kharkov", "street", "Sumskaya", 
+	   "47", 6, "Mark", "Petrenko", "man", 33);
+   Employee d("Cleaner", "5168755434834502", "10000", "0994560941", "Kharkov", "prospect", 
+	   "Moskovskiy", "24", 30, "Anna", "Ivanova", "woman", 65);
 
-   Employee b("Programmer", "5168755434678912", "0994567132", "Kharkov", "prospect", "Moskovskiy", "248a", 47,
-	   "Andrey", "Ivanov", "man", 25, 2, info1);
-
-   cout << a;
-
-
-   vector<Employee>employees(50);
-   int m = employees.size();
-  
    //Я старалась, но я запуталась и хочу спать... =(
+
+   vector<Department>departments(50);
+   int n = departments.size();
+   Department aDep("Saleers", "Viktor", "Baranov", "man", 44);
+   Department bDep("It", "Maxim", "Aleksandrov", "man", 34);
+   departments.push_back(aDep);
+   departments.push_back(bDep);
+  
+   aDep.set_Employee(b);
+   aDep.set_Employee(c);
+   aDep.set_Employee(d);
+
+   aDep.get_Employees();
+
+   ///////////////////////////////////////////
+   //salary/////////////////////////
+   ///////////////////////////////////
+
+   const int N = 5;
+   EmployeeSalary** employes = new EmployeeSalary*[N];
+
+   CalcInfo info;
+   info.base = 7500;
+   info.percent = 15;
+   info.total = 100000;
+   employes[0] = new EmployeeSalary("Alex", "Alex","man", 26, "Saler", 4, info);
+
+   for (int i = 0; i < N; i++)
+   {
+	   cout << *employes[i] << endl;
+   }
+
+   for (int i = 0; i < N; i++)
+   {
+	   delete employes[i];
+   }
+   delete[] employes;
+  
    
 }
 
