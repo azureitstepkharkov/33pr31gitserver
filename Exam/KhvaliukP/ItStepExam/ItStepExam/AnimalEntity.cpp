@@ -50,3 +50,10 @@ AnimalEntity::~AnimalEntity()
 {
 	delete[] gender;
 }
+
+ostream & operator<<(ostream & output, AnimalEntity & anmlent)
+{
+	output << "Gender:  " << anmlent.gender << endl;
+	output << "Age is: " << anmlent.age << endl;
+	return output;
+}

@@ -10,6 +10,7 @@ public:
 	Person(char* phone_);
 	void Set_Phone(char* phone_);
 	char* Get_Phone();
+	friend ostream& operator << (ostream& output, Person& prsn);
 	~Person();
 };
 

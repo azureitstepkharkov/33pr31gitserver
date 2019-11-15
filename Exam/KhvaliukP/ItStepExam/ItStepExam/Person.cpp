@@ -30,3 +30,9 @@ Person::~Person()
 {
 	delete[] phone;
 }
+
+ostream & operator<<(ostream & output, Person & prsn)
+{
+	output << "Phone num.: " << prsn.phone << endl;
+	return output;
+}
